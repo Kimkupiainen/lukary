@@ -1,0 +1,38 @@
+[
+  {
+    "Date":"2025-03-17 17:00",
+    "Event Name":"Past event date",
+    "Location":"redacted",
+    "Description":"No"
+  },
+  {
+    "Date":"2025-04-30 19:30",
+    "Event Name":"Test event",
+    "Location":"K1:s house",
+    "Description":"Only for K1"
+  },
+  {
+    "Date":"2025-05-01 18:00",
+    "Event Name":"Vappu",
+    "Location":"Kainuu",
+    "Description":"Workers party!"
+  },
+  {
+    "Date":"2025-05-08 18:00",
+    "Event Name":"Monthly Meetup",
+    "Location":"Lori",
+    "Description":"Talks + pizza"
+  },
+  {
+    "Date":"2025-05-10 18:00",
+    "Event Name":"Cyber CTF Challenge",
+    "Location":"Online (Discord)",
+    "Description":"Hands-on hacking competition"
+  },
+  {
+    "Date":"2025-05-28 18:00",
+    "Event Name":"KajSec goes to Savo",
+    "Location":"Kuopio, Savonia Kampussyd\u00e4n, Microkatu 1D",
+    "Description":"Pohjois-Savon suurin tietoturvatapahtuma"
+  }
+]
