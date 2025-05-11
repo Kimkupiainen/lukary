@@ -32,6 +32,21 @@
     .navbar {
       background-color: #ffffffee;
     }
+	.responsive-fb-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 150px; /* korkeussuhde – voit säätää */
+  height: 0;
+  overflow: hidden;
+}
+
+.responsive-fb-container .fb-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
 
     .hero {
       height: 90vh;
@@ -100,6 +115,14 @@
     <div class="hero-content text-white text-center p-4">
       <img src="assets/img/vouho3.png" alt="LUKA RY logo" style="max-height: 500px;">
       <p class="lead">Luonnonvaraisten Eläinten Apu – Kajaani</p>
+	          <div class="d-flex justify-content-center gap-2">
+          <a href="https://www.facebook.com/LUKAyhdistys" target="_blank" class="btn btn-primary btn-sm">
+            <i class="bi bi-facebook me-1"></i> Facebook
+          </a>
+          <a href="https://www.instagram.com/luka_ry/" target="_blank" class="btn btn-danger btn-sm">
+            <i class="bi bi-instagram me-1"></i> Instagram
+          </a>
+        </div>
     </div>
   </section>
 
@@ -121,42 +144,23 @@
 <script src="https://static.elfsight.com/platform/platform.js" async></script>
 <div class="elfsight-app-074c2381-7b7a-4491-af41-e17bfc3393cb" data-elfsight-app-lazy></div>
   </main>
-  <section class="py-5" id="contact">
-    <div class="container" data-aos="fade-up">
-      <div class="text-center mb-4">
-        <h2 class="section-title">Ota yhteyttä</h2>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <ul class="list-unstyled">
-            <li><strong>📞 Eläinasioissa:</strong> 046 884 3186 (soitamme takaisin jos emme vastaa)</li>
-            <li><strong>Sähköposti:</strong> <a href="mailto:info@lukayhdistys.fi">info@lukayhdistys.fi</a></li>
-            <li><strong>Facebook:</strong> <a href="https://www.facebook.com/LUKAyhdistys" target="_blank">facebook.com/LUKAyhdistys</a></li>
-            <li><strong>Osoite:</strong> Kajaani, Kainuu</li>
-          </ul>
-        </div>
+<section class="py-5" id="contact">
+  <div class="container" data-aos="fade-up">
+    <div class="text-center mb-4">
+      <h2 class="section-title">Ota yhteyttä</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <ul class="list-unstyled mb-3">
+          <li><strong>📞 Eläinasioissa:</strong> 046 884 3186 (soitamme takaisin jos emme vastaa)</li>
+          <li><strong>Sähköposti:</strong> <a href="mailto:luka.yhdistys@gmail.com">luka.yhdistys@gmail.com</a></li>
+          <li><strong>Osoite:</strong> Kajaani, Kainuu</li>
+        </ul>
+		<br>
       </div>
     </div>
-  </section>
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/fi_FI/sdk.js#xfbml=1&version=v19.0" nonce="abc123">
-  </script>
-  <section class="text-center my-5">
-    <div class="fb-page"
-         data-href="https://www.facebook.com/LUKAyhdistys"
-         data-tabs="timeline"
-         data-width="500"
-         data-height=""
-         data-small-header="false"
-         data-adapt-container-width="true"
-         data-hide-cover="false"
-         data-show-facepile="true">
-      <blockquote cite="https://www.facebook.com/LUKAyhdistys" class="fb-xfbml-parse-ignore">
-        <a href="https://www.facebook.com/LUKAyhdistys">LUKA ry</a>
-      </blockquote>
-    </div>
-  </section>
+  </div>
+</section>
   <section class="bg-light py-5" id="donate">
     <div class="container" data-aos="fade-up">
       <div class="text-center mb-4">
@@ -201,7 +205,10 @@
     </div>
   </div>
 </section>
+<section class="text-center">
+<div id="fb-frame-container" style="width: 100%; max-width: 500px; margin: auto;"></div>
 
+</section>
 
 
   <footer>
@@ -216,6 +223,34 @@
   <script>
     AOS.init();
   </script>
+  <script>
+  function loadFacebookFrame() {
+    const container = document.getElementById('fb-frame-container');
+    const width = container.offsetWidth;
+    const height = Math.round(width * 1.2); // esim. 5:6 kuvasuhde
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLUKAyhdistys&tabs=timeline&width=${width}&height=${height}&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
+    iframe.style.border = 'none';
+    iframe.style.overflow = 'hidden';
+    iframe.style.width = '100%';
+    iframe.style.height = `${height}px`;
+    iframe.setAttribute('scrolling', 'no');
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allowfullscreen', 'true');
+    iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
+
+    container.appendChild(iframe);
+  }
+
+  window.addEventListener('load', loadFacebookFrame);
+  window.addEventListener('resize', () => {
+    // tee dynaaminen päivitys myös ikkunan koon muuttuessa
+    const container = document.getElementById('fb-frame-container');
+    container.innerHTML = '';
+    loadFacebookFrame();
+  });
+</script>
 </body>
 
 </html>
